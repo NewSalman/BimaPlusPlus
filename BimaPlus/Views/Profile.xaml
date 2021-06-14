@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BimaPlus.Views.Profile">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#fdfffd">
+            <Frame>
+                <StackLayout Orientation="Horizontal">
+                    <Frame BorderColor="Black" CornerRadius="180" HeightRequest="100" WidthRequest="100">
+                        <Image x:Name="ImageProfile" VerticalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="100"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <StackLayout Padding="10, 0, 0, 0">
+                            <Label Text="Username: " HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Phone Number: " HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Balance: " HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Masa Berlaku: " HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Tipe Kartu: " HorizontalOptions="StartAndExpand"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="{Binding Username}"/>
+                            <Label Text="{Binding PhoneNumber}"/>
+                            <Label Text="{Binding Balance}"/>
+                            <Label Text="{Binding ExpiredAt}"/>
+                            <Label Text="{Binding CardType}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <StackLayout Margin="0, 20, 0, 0">
+                <Label Text="Info Paket" FontSize="26" HorizontalOptions="CenterAndExpand"/>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Padding="20, 0, 0, 0">
+                        <Label Text="Internet Quota " HorizontalOptions="StartAndExpand" FontSize="20"/>
+                        <Label Text="Call Quota " HorizontalOptions="StartAndExpand" FontSize="20"/>
+                        <Label Text="SMS Quota " HorizontalOptions="StartAndExpand" FontSize="20"/>
+                    </StackLayout>
+                    <StackLayout Padding="30, 0, 0, 0">
+                        <Label Text="{Binding InternetQuota}" FontSize="20" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="{Binding CallQuota}" FontSize="20" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="{Binding SMSQuota}" FontSize="20" HorizontalOptions="StartAndExpand"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Margin="0, 20, 0, 0">
+                <Label Text="Sosial Media" FontSize="26" HorizontalOptions="CenterAndExpand"/>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Padding="20, 0, 0, 0">
+                        <Label Text="Google" HorizontalOptions="StartAndExpand" FontSize="20"/>
+                        <Label Text="Facebook" HorizontalOptions="StartAndExpand" FontSize="20"/>
+                        <Label Text="Microsoft" HorizontalOptions="StartAndExpand" FontSize="20"/>
+                    </StackLayout>
+                    <StackLayout Padding="20, 0, 0, 0">
+                        <Switch IsToggled="{Binding GoogleSync}" HorizontalOptions="StartAndExpand"/>
+                        <Switch IsToggled="{Binding FacebookSync}" HorizontalOptions="StartAndExpand"/>
+                        <Switch IsToggled="{Binding MicrosoftSync}" HorizontalOptions="StartAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Padding="20, 0, 0, 0">
+                        <Label Text="{Binding GoogleEmail}" HorizontalOptions="StartAndExpand" FontSize="20" TextColor="LightBlue"/>
+                        <Label Text="{Binding FacebookEmail}" HorizontalOptions="StartAndExpand" FontSize="20" TextColor="LightBlue"/>
+                        <Label Text="{Binding MicrosoftEmail}" HorizontalOptions="StartAndExpand" FontSize="20" TextColor="LightBlue"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

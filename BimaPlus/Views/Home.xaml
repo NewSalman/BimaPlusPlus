@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BimaPlus.Views.Home">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame" x:Key="FramePackage">
+                <Setter Property="BackgroundColor" Value="#efefef"/>
+            </Style>
+            <Style TargetType="Frame" x:Key="FrameBorder">
+                <Setter Property="BorderColor" Value="#efefef"/>
+            </Style>
+
+            <Style TargetType="Image" x:Key="img">
+                <Setter Property="HeightRequest" Value="180"/>
+                <Setter Property="WidthRequest" Value="110"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Search"
+                    Priority="0"
+                     Order="Default"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <CarouselView ItemsSource="{Binding Images}" HeightRequest="190" Position="{Binding CarouselPosition, Mode=TwoWay}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding ImagePath}" Aspect="Fill"/>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <Frame BackgroundColor="#efefef" Margin="0, 0, 0, 10">
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout>
+                                <Label Text="{Binding PhoneNumber, StringFormat='Hai, {0}'}" FontSize="10"/>
+                                <Label Text="{Binding ExpiredAt, StringFormat='Berlaku sampai {0}'}" FontSize="10"/>
+                                <Label Text="{Binding Balance, StringFormat='Sisa Pulsa {0}'}"  FontSize="10"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                                <Button BackgroundColor="Transparent" Text="Refresh" Padding="0" Margin="0" FontAttributes="None"/>
+                                <Button BackgroundColor="#b81835" Text="+ Isi Pulsa" TextColor="White" FontAttributes="Bold" Command="{Binding Test1}"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Grid Margin="0, 20, 0, 0"  Padding="0, 0, 0, 0" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HeightRequest="100">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="icmenuin.png" Grid.Row="0" Grid.Column="0"/>
+                                <Image Source="icmenucall.png" Grid.Row="0" Grid.Column="1"/>
+                                <Image Source="icmenusms.png" Grid.Row="0" Grid.Column="2"/>
+                                <Image Source="icmenumonster.png" Grid.Row="0" Grid.Column="3"/>
+                                <Label Text="{Binding InternetQuota, StringFormat='{0} GB'}" Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand" FontSize="16"/>
+                                <Label Text="{Binding CallQuota,StringFormat='{0} Hours'}" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" FontSize="16"/>
+                                <Label Text="{Binding SMSQuota, StringFormat='{0} SMS'}" Grid.Row="1" Grid.Column="2" HorizontalOptions="CenterAndExpand" FontSize="16"/>
+                                <Label Text="{Binding Bonus, StringFormat='{0}'}" Grid.Row="1" Grid.Column="3" HorizontalOptions="CenterAndExpand" FontSize="16"/>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <CollectionView ItemsSource="{Binding QuotaAON}"  HeightRequest="242" Margin="10, 10, 0, 0"
+                                SelectionMode="Single" SelectionChangedCommand="{Binding Test1}" SelectedItem="{Binding SelectedItem}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="7" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" Style="{StaticResource FrameBorder}">
+                                
+                                <StackLayout>
+                                    
+                                    <Label Text="{Binding ID}" IsVisible="false" x:Name="ID"/>
+                                    <Image Source="{Binding ImagePath}" Style="{StaticResource img}" VerticalOptions="Start"/>
+
+
+                                    <Label Text="{Binding PackageCardTitle}" HorizontalOptions="CenterAndExpand"/>
+                                    <Label VerticalOptions="End"
+                                            Text="{Binding Price, StringFormat='Rp. {0}'}" HorizontalTextAlignment="Center"
+                                            BackgroundColor="#b81835" TextColor="White" Margin="0, 7, 0, 0" Padding="8, 2, 8, 2" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView ItemsSource="{Binding QuotaHappy}"  HeightRequest="242" Margin="10, 10, 0, 0"
+                                SelectionMode="Single" SelectionChangedCommand="{Binding Test1}" SelectedItem="{Binding SelectedItem}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="7" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="0, 0, 0, 0" Margin="0, 0, 0, 0" Style="{StaticResource FrameBorder}">
+
+                                <StackLayout>
+
+                                    <Label Text="{Binding ID}" IsVisible="false" x:Name="ID"/>
+                                    <Image Source="{Binding ImagePath}" Style="{StaticResource img}" VerticalOptions="Start"/>
+
+
+                                    <Label Text="{Binding PackageCardTitle}" HorizontalOptions="CenterAndExpand"/>
+                                    <Label VerticalOptions="End"
+                                            Text="{Binding Price, StringFormat='Rp. {0}'}" HorizontalTextAlignment="Center"
+                                            BackgroundColor="#b81835" TextColor="White" Margin="0, 7, 0, 0" Padding="8, 2, 8, 2" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

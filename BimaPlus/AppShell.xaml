@@ -1,0 +1,88 @@
+﻿<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:BimaPlus.Views"
+       xmlns:FlyItem="clr-namespace:BimaPlus.Views.Flyout"
+       xmlns:Tabs="clr-namespace:BimaPlus.Views.Tabs"
+       x:Class="BimaPlus.AppShell">
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="White"
+                  HeightRequest="200">
+                <Image Aspect="AspectFill"
+                       HeightRequest="100"
+                       WidthRequest="100"
+                       Source="logobima.png" />
+                <Label Text="{Binding PhoneNumber}"
+                       TextColor="LightGray"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="End" 
+                       Padding="10"/>
+                </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <StackLayout>
+                <Label Text="Bima+"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+                <Label Text="Version 0.0.1"
+                       TextColor="Black"
+                       HorizontalOptions="Center" />
+
+                <Label Text="Created by Salman Syahbani"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+
+                <Label Text="created only for learing purpose"
+                       TextColor="Black"
+                       FontSize="10"
+                       Margin="0, 0, 0, 3"
+                       HorizontalOptions="Center" />
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+
+
+    <FlyoutItem>
+        
+        <Tab Title="Beranda"  Icon="ichomepage">
+            <ShellContent ContentTemplate="{DataTemplate views:Home}" />
+        </Tab>
+        <Tab Title="Akun Bima+" Icon="logobima">
+            <ShellContent ContentTemplate="{DataTemplate views:Profile}" />
+        </Tab>
+        <Tab Title="Nontifikasi">
+            <ShellContent ContentTemplate="{DataTemplate FlyItem:Nontifications}" />
+        </Tab>
+        <Tab Title="Musikku">
+            <ShellContent ContentTemplate="{DataTemplate FlyItem:MyMusic}"/>
+        </Tab>
+    </FlyoutItem>
+
+    <MenuItem 
+        IconImageSource="ichomepage" 
+        Text="Beranda"
+        Command="{Binding ToHomePage}"/>
+    
+    <FlyoutItem Title="3Product" Icon="icmenutri">
+        <ShellContent ContentTemplate="{DataTemplate Tabs:ThreeProduct}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Bantuan">
+        <ShellContent ContentTemplate="{DataTemplate FlyItem:Help}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Pengaturan">
+        <ShellContent ContentTemplate="{DataTemplate FlyItem:Settings}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Musik" Icon="icmenumusic">
+        <ShellContent ContentTemplate="{DataTemplate Tabs:ThreeMusic}" />
+    </FlyoutItem>
+
+
+
+</Shell>
